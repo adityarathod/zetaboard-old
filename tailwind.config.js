@@ -2,7 +2,15 @@ module.exports = {
   purge: ['./pages/**/*.js', './components/**/*.js'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        royal: '#00296B',
+        cream: '#EAFDF8',
+        fire: '#C1292E',
+        mustard: '#F1D302',
+        camel: '#AC9969',
+      },
+    },
   },
   variants: {
     extend: {},
