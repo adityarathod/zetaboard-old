@@ -1,35 +1,18 @@
+import { FC } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { FC, useEffect, useState } from 'react'
-import fb from '../../firebase'
 import Leaderboard from '../../components/leaderboard/leaderboard'
-import LeaderEntry from '../../interfaces/LeaderEntry'
+import { useUserScores } from '../../queries'
 
 const UserPage: FC = () => {
   const router = useRouter()
   const { username } = router.query
-  const [rankings, setRankings] = useState<LeaderEntry[]>(null)
-
-  const getRankings = async () => {
-    if (!username) return
-    const docs = await fb
-      .firestore()
-      .collection('rankings')
-      .where('user', '==', router.query.username)
-      .orderBy('score', 'desc')
-      .get()
-    const data = docs.docs.map(x => x.data())
-    setRankings(data as LeaderEntry[])
-  }
-
-  useEffect(() => {
-    getRankings()
-  }, [fb, username])
+  const scores = useUserScores(username as string)
 
   return (
     <div>
       <Head>
-        <title>Zetaboard: {router ? router.query.username : 'User Page'}</title>
+        <title>Zetaboard: {username ? username : 'User Page'}</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
@@ -39,8 +22,8 @@ const UserPage: FC = () => {
           Scores for {router ? router.query.username : 'loading'}
         </h1>
         <div className='max-w-3xl mx-auto my-0'>
-          {!rankings && <div className='text-center'>Loading...</div>}
-          <Leaderboard data={rankings} />
+          {scores.length === 0 && <div className='text-center'>Loading...</div>}
+          <Leaderboard data={scores} />
         </div>
       </main>
     </div>
