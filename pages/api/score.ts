@@ -11,7 +11,7 @@ const get = async (req: NextApiRequest, res: NextApiResponse) => {
   const { username } = req.query
   if (!username) {
     res.status(400).json({
-      error: 'missing-parameter',
+      error: 'missing-required-parameter',
       details: 'missing required username parameter',
     })
     return
