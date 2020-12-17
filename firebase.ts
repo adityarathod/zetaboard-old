@@ -12,6 +12,13 @@ const firebaseConfig = {
 
 if (typeof window !== 'undefined' && !firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
+  // TODO: remove
+  firebase.auth().onAuthStateChanged(user => {
+    console.log(JSON.stringify(user))
+  })
 }
 
+const githubAuthProvider = new firebase.auth.GithubAuthProvider()
+
+export { githubAuthProvider }
 export default firebase
