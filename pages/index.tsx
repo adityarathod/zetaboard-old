@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Leaderboard from '../components/leaderboard/leaderboard'
@@ -6,7 +6,7 @@ import { useLeaderboard } from '../queries'
 import Header from '../components/header/header'
 
 const Home: FC = () => {
-  const rankings = useLeaderboard(true)
+  const rankings = useLeaderboard()
 
   return (
     <div>
@@ -16,7 +16,7 @@ const Home: FC = () => {
       </Head>
 
       <main className='max-w-4xl mx-auto mt-8 px-8 py-4 text-center'>
-        <Header>
+        <Header subheading='Top 20 scorers'>
           <div className='py-2'>
             <Link href='/add'>
               <a className='font-medium text-mustard hover:text-yellow-400'>
