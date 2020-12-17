@@ -2,12 +2,12 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAPsRQjNG1LcFJSrhgeFLt0uWTurgFp2VI',
-  authDomain: 'zetaboardapp.firebaseapp.com',
-  projectId: 'zetaboardapp',
-  storageBucket: 'zetaboardapp.appspot.com',
-  messagingSenderId: '693677923348',
-  appId: '1:693677923348:web:19f583b189b49bd8a65b01',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
 }
 
 if (typeof window !== 'undefined' && !firebase.apps.length) {
