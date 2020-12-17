@@ -17,7 +17,7 @@ const useUserScores = (username?: string): LeaderEntry[] => {
   }
   useEffect(() => {
     getUserScores()
-  }, [firebase])
+  }, [firebase, username])
   return scores
 }
 

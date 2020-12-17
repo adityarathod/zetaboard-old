@@ -1,14 +1,19 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Leaderboard from '../../components/leaderboard/leaderboard'
 import { useUserScores } from '../../queries'
 
 const UserPage: FC = () => {
+  const [username, setUsername] = useState<string>(undefined)
   const router = useRouter()
-  const { username } = router.query
-  const scores = useUserScores(username as string)
 
+  useEffect(() => {
+    if (Array.isArray(router.query.username)) return
+    setUsername(router.query.username)
+  }, [router.query.username])
+
+  const scores = useUserScores(username)
   return (
     <div>
       <Head>
