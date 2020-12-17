@@ -1,7 +1,9 @@
 import { FC, useEffect, useState } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Leaderboard from '../../components/leaderboard/leaderboard'
+import Header from '../../components/header/header'
 import { useUserScores } from '../../queries'
 
 const UserPage: FC = () => {
@@ -21,12 +23,17 @@ const UserPage: FC = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='max-w-7xl mx-auto my-0 p-4'>
-        <h1 className='mt-4 text-4xl text-center font-bold'>Zetaboard</h1>
-        <h1 className='mt-1 text-xl text-center mb-16'>
-          Scores for {router ? router.query.username : 'loading'}
-        </h1>
-        <div className='max-w-3xl mx-auto my-0'>
+      <main className='max-w-4xl mx-auto mt-8 px-8 py-4'>
+        <Header subheading={`Scores for ${router ? '@' + router.query.username : 'loading'}`}>
+          <div className='py-2'>
+            <Link href='/add'>
+              <a className='font-medium text-mustard hover:text-yellow-400'>
+                Add your score &rarr;
+              </a>
+            </Link>
+          </div>
+        </Header>
+        <div className='max-w-4xl mx-auto my-0'>
           {scores.length === 0 && <div className='text-center'>Loading...</div>}
           <Leaderboard data={scores} />
         </div>
