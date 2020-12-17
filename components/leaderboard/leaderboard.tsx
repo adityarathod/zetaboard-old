@@ -8,7 +8,7 @@ interface LeaderboardEntryProps {
 
 const LeaderboardEntry: FC<LeaderboardEntryProps> = ({ data }: LeaderboardEntryProps) => {
   return (
-    <div className='my-1 w-full flex flex-row'>
+    <div className='my-1 w-full flex flex-row text-left'>
       <div className='flex-1 font-medium'>
         <Link href={`/user/${data.user}`}>
           <a className='text-mustard hover:text-fire cursor-pointer'>{data.user}</a>
