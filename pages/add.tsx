@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Header from '../components/header/header'
-import firebase, { githubAuthProvider } from '../firebase'
+import firebase, { githubAuthProvider } from '../firebase-client'
 
 const Add: FC = () => {
   const [username, setUsername] = useState<string>(null)

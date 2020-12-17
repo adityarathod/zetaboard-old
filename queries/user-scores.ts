@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import LeaderEntry from '../interfaces/LeaderEntry'
-import firebase from '../firebase'
+import firebase from '../firebase-client'
 
 const useUserScores = (username?: string): LeaderEntry[] => {
   const [scores, setScores] = useState<LeaderEntry[]>([])

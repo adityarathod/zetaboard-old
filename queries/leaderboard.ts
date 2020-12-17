@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import LeaderEntry from '../interfaces/LeaderEntry'
-import firebase from '../firebase'
+import firebase from '../firebase-client'
 import mockLeaderboard from '../mock-data/leaderboard'
 
 const useLeaderboard = (mocked?: boolean): LeaderEntry[] => {
