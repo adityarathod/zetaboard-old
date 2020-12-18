@@ -37,6 +37,15 @@ const UserPage: FC = () => {
           {scores.length === 0 && <div className='text-center'>Loading...</div>}
           <Leaderboard data={scores} />
         </div>
+        {scores.length !== 0 && (
+          <div className='mt-16'>
+            <Link href={`/api/score?username=${username}`}>
+              <a className='font-medium text-mustard hover:text-yellow-400'>
+                Download all scores &rarr;
+              </a>
+            </Link>
+          </div>
+        )}
       </main>
     </div>
   )
