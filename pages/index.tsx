@@ -17,10 +17,13 @@ const Home: FC = () => {
 
       <main className='max-w-4xl mx-auto mt-8 px-8 py-4 text-center'>
         <Header subheading='Top 20 scorers'>
-          <div className='py-2'>
+          <div className='py-2 flex flex-col justify-center items-end'>
             <Link href='/add'>
-              <a className='font-medium text-mustard hover:text-yellow-400'>
-                Add your score &rarr;
+              <a className='font-medium text-mustard hover:text-yellow-400 block'>Add your score</a>
+            </Link>
+            <Link href='/generate/token'>
+              <a className='mt-1 font-medium text-mustard hover:text-yellow-400 block'>
+                Generate submission token
               </a>
             </Link>
           </div>
@@ -30,6 +33,8 @@ const Home: FC = () => {
           {rankings.length === 0 && <div className='text-center'>Loading...</div>}
           <Leaderboard data={rankings} />
         </div>
+
+        <div className='mt-4'></div>
       </main>
     </div>
   )

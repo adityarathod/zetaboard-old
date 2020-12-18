@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react'
+import Link from 'next/link'
 
 interface HeaderProps {
   title?: string
@@ -10,7 +11,11 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   return (
     <div className='w-full flex flex-row justify-between items-center mb-10'>
       <div>
-        <h1 className='text-5xl text-left font-bold'>{props.title ?? 'Zetaboard'}</h1>
+        <Link href='/'>
+          <h1 className='cursor-pointer hover:opacity-75 text-5xl text-left font-bold'>
+            {props.title ?? 'Zetaboard'}
+          </h1>
+        </Link>
         {props.subheading && (
           <h2 className='mt-2 text-lg opacity-80 font-medium text-left'>{props.subheading}</h2>
         )}

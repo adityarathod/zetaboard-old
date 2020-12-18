@@ -42,7 +42,7 @@ const Token: FC = () => {
   return (
     <div>
       <Head>
-        <title>Zetaboard</title>
+        <title>Zetaboard: Generate Token</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
