@@ -1,4 +1,4 @@
-import LeaderEntry from '../interfaces/LeaderEntry'
+import LeaderEntry from '../../interfaces/LeaderEntry'
 
 const mockLeaderboard: LeaderEntry[] = [
   { score: 26, addedat: { seconds: 1608167460, nanoseconds: 0 }, user: 'adityarathod' },

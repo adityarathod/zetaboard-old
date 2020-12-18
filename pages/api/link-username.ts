@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import type { NextApiRequest, NextApiResponse } from 'next'
-import ZetaboardApiError from '../../api_errors'
-import MissingParameterError from '../../api_errors/missing-param'
-import UnauthorizedError from '../../api_errors/unauthorized'
+import ZetaboardApiError from '../../util/api-errors'
+import MissingParameterError from '../../util/api-errors/missing-param'
+import UnauthorizedError from '../../util/api-errors/unauthorized'
 import admin from '../../firebase-server'
 
 const isFirebaseError = err => {
