@@ -1,14 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import type { NextApiRequest, NextApiResponse } from 'next'
-import ZetaboardApiError from '../../util/api-errors'
+import ZetaboardApiError, { isFirebaseAuthError } from '../../util/api-errors'
 import MissingParameterError from '../../util/api-errors/missing-param'
 import UnauthorizedError from '../../util/api-errors/unauthorized'
 import admin from '../../firebase-server'
-
-const isFirebaseError = err => {
-  if (err.code) return err.code.startsWith('auth/')
-  return false
-}
 
 const rootResolver = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') await post(req, res)
@@ -58,7 +53,7 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
     if (err instanceof ZetaboardApiError) {
       status = err.status
       payload = { error: err.name, details: err.message }
-    } else if (isFirebaseError(err)) {
+    } else if (isFirebaseAuthError(err)) {
       status = 401
       payload = { error: 'unauthorized', details: 'improper Authorization header token' }
     } else {
