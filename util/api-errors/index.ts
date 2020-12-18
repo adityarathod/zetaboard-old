@@ -12,7 +12,7 @@ class ZetaboardApiError extends Error {
   }
 }
 
-const isFirebaseAuthError = err => {
+const isFirebaseAuthError = (err: { code: string }): boolean => {
   if (err.code) return err.code.startsWith('auth/')
   return false
 }
