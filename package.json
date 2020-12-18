@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.1.0",
+    "cors": "^2.8.5",
     "firebase": "^8.2.0",
     "firebase-admin": "^9.4.2",
     "next": "10.0.3",

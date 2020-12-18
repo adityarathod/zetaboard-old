@@ -1,13 +1,23 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import CORS from 'cors'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import ZetaboardApiError, { isFirebaseAuthError } from '../../util/api-errors'
 import MissingParameterError from '../../util/api-errors/missing-param'
 import admin from '../../firebase-server'
+import runMiddleware from '../../util/run-middleware'
+
+const cors = CORS({
+  methods: ['GET', 'HEAD', 'POST'],
+  origin: /\.zetamac\.com$/,
+})
 
 const rootResolver = async (req: NextApiRequest, res: NextApiResponse) => {
+  await runMiddleware(req, res, cors)
   if (req.method === 'GET') await get(req, res)
   else if (req.method === 'POST') await post(req, res)
+  else if (req.method === 'OPTIONS') res.status(204)
   else res.status(405).json({ error: 'method-not-allowed' })
+  res.end()
 }
 
 const get = async (req: NextApiRequest, res: NextApiResponse) => {
