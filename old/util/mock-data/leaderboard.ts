@@ -1,0 +1,38 @@
+import LeaderEntry from '../../interfaces/LeaderEntry'
+
+const mockLeaderboard: LeaderEntry[] = [
+  { score: 26, addedat: { seconds: 1608167460, nanoseconds: 0 }, user: 'adityarathod' },
+  { score: 23, addedat: { seconds: 1608170640, nanoseconds: 0 }, user: 'adityarathod' },
+  { score: 31, addedat: { seconds: 1606726326, nanoseconds: 0 }, user: 'esember0' },
+  { score: 68, addedat: { seconds: 1606812982, nanoseconds: 0 }, user: 'nsimenon1' },
+  { score: 78, addedat: { seconds: 1606798785, nanoseconds: 0 }, user: 'bwahner2' },
+  { score: 1, addedat: { seconds: 1607718436, nanoseconds: 0 }, user: 'onarramore3' },
+  { score: 95, addedat: { seconds: 1606807112, nanoseconds: 0 }, user: 'bthornber4' },
+  { score: 29, addedat: { seconds: 1607736676, nanoseconds: 0 }, user: 'qgrishukov5' },
+  { score: 74, addedat: { seconds: 1606778790, nanoseconds: 0 }, user: 'spetherick6' },
+  { score: 93, addedat: { seconds: 1606986095, nanoseconds: 0 }, user: 'ctrimme7' },
+  { score: 6, addedat: { seconds: 1606989542, nanoseconds: 0 }, user: 'lshergill8' },
+  { score: 9, addedat: { seconds: 1606970927, nanoseconds: 0 }, user: 'hjorger9' },
+  { score: 96, addedat: { seconds: 1607024039, nanoseconds: 0 }, user: 'dcorstona' },
+  { score: 50, addedat: { seconds: 1607046033, nanoseconds: 0 }, user: 'cfaragherb' },
+  { score: 11, addedat: { seconds: 1607572951, nanoseconds: 0 }, user: 'bpiechnikc' },
+  { score: 21, addedat: { seconds: 1607181205, nanoseconds: 0 }, user: 'smorbyd' },
+  { score: 83, addedat: { seconds: 1606995428, nanoseconds: 0 }, user: 'dfarndelle' },
+  { score: 4, addedat: { seconds: 1608148096, nanoseconds: 0 }, user: 'blaunderf' },
+  { score: 75, addedat: { seconds: 1607159593, nanoseconds: 0 }, user: 'krolfsg' },
+  { score: 95, addedat: { seconds: 1606980596, nanoseconds: 0 }, user: 'rpenkmanh' },
+  { score: 48, addedat: { seconds: 1608049071, nanoseconds: 0 }, user: 'kpittfordi' },
+  { score: 72, addedat: { seconds: 1607421360, nanoseconds: 0 }, user: 'rorielj' },
+  { score: 24, addedat: { seconds: 1607593641, nanoseconds: 0 }, user: 'cculpank' },
+  { score: 34, addedat: { seconds: 1607363878, nanoseconds: 0 }, user: 'mgillimghaml' },
+  { score: 14, addedat: { seconds: 1607715238, nanoseconds: 0 }, user: 'rhulbertm' },
+  { score: 45, addedat: { seconds: 1606707061, nanoseconds: 0 }, user: 'tklaffsn' },
+  { score: 57, addedat: { seconds: 1607764138, nanoseconds: 0 }, user: 'ehanwayo' },
+  { score: 11, addedat: { seconds: 1607406297, nanoseconds: 0 }, user: 'cwakemanp' },
+  { score: 76, addedat: { seconds: 1607032263, nanoseconds: 0 }, user: 'eprodrickq' },
+  { score: 97, addedat: { seconds: 1606811428, nanoseconds: 0 }, user: 'tclearyr' },
+  { score: 29, addedat: { seconds: 1607679400, nanoseconds: 0 }, user: 'mambrosolis' },
+  { score: 43, addedat: { seconds: 1606923674, nanoseconds: 0 }, user: 'agamblest' },
+].sort((a, b) => b.score - a.score)
+
+export default mockLeaderboard
