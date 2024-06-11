@@ -12,4 +12,9 @@ const rand = (n: number): number => Math.floor(Math.random() * n)
 const randRange = (min: number, max: number): number => min + rand(max - min + 1)
 const rrThunk = (min: number, max: number) => (): number => randRange(min, max)
 
+/**
+ * Gets the seconds after the epoch.
+ */
+const now = () => Math.floor(Date.now() / 1000)
+
 export { rand, randRange, rrThunk }

@@ -2,7 +2,7 @@ import { FC, useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import Header from '../components/header/header'
 import createGenerator from '../util/prob-gen/generator'
-import Problem from '../util/prob-gen/problem'
+import Problem, { ProblemHistory, ProblemRecord } from '../util/prob-gen/problem'
 
 const Play: FC = () => {
   const input = useRef(null)
@@ -15,7 +15,10 @@ const Play: FC = () => {
     },
     ops: ['add', 'sub', 'mul', 'div'],
   })
-  const [prob, setProb] = useState<Problem>(generate())
+  const [prob, setProb] = useState<Problem>(null)
+  const [problemHistory, _setProblemHistory] = useState<ProblemHistory>()
+  const setProblemHistory = (p: ProblemRecord) => _setProblemHistory([...problemHistory, p])
+  const [startTime, setStartTime] = useState<number>(null)
   const [val, setVal] = useState<string>()
   const checkAns = e => {
     if (parseInt(e.target.value) === prob.answer) {
@@ -30,6 +33,7 @@ const Play: FC = () => {
       input.current.focus()
     }
   }, [input])
+  useEffect(() => {}, [])
   return (
     <div>
       <Head>

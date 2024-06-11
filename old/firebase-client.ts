@@ -1,5 +1,6 @@
-import firebase from 'firebase'
-import 'firebase/firestore'
+import { initializeApp, getApps, FirebaseApp } from 'firebase/app'
+import { getAuth, GithubAuthProvider } from 'firebase/auth'
+// import 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY,
@@ -10,15 +11,16 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
 }
 
-if (typeof window !== 'undefined' && !firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig)
+let app: FirebaseApp
+if (typeof window !== 'undefined' && !getApps().length) {
+  app = initializeApp(firebaseConfig)
   // TODO: remove
-  firebase.auth().onAuthStateChanged(user => {
+  getAuth(app).onAuthStateChanged(user => {
     console.log(JSON.stringify(user))
   })
 }
 
-const githubAuthProvider = new firebase.auth.GithubAuthProvider()
+const githubAuthProvider = new GithubAuthProvider()
 
 export { githubAuthProvider }
-export default firebase
+export default app

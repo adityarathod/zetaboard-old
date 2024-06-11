@@ -7,6 +7,9 @@ export type ProblemObject = {
   text: string
 }
 
+export type ProblemRecord = ProblemObject & { timingMS: number }
+export type ProblemHistory = ProblemRecord[]
+
 class Problem {
   left: number
   right: number

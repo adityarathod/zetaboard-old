@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import LeaderEntry from '../interfaces/LeaderEntry'
-import firebase from '../firebase-client'
+import app from '../firebase-client'
+import { getFirestore, collection, query, orderBy, limit } from 'firebase/firestore'
 import mockLeaderboard from '../util/mock-data/leaderboard'
 
 const useLeaderboard = (mocked?: boolean): LeaderEntry[] => {
@@ -11,13 +12,11 @@ const useLeaderboard = (mocked?: boolean): LeaderEntry[] => {
       setLeaders(mockLeaderboard)
       return
     }
-    const querySnapshot = await firebase
-      .firestore()
-      .collection('rankings')
-      .orderBy('score', 'desc')
-      .limit(20)
-      .get()
-    const retrievedDocs = querySnapshot.docs.map(doc => doc.data())
+
+    const store = getFirestore(app)
+    const rankingsCollection = await collection(store, 'rankings')
+    const q = query(rankingsCollection, orderBy('score', 'desc'), limit(20))
+    const retrievedDocs = .map(doc => doc.data())
     console.log(JSON.stringify(retrievedDocs))
     setLeaders(retrievedDocs as LeaderEntry[])
   }
